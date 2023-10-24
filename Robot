@@ -1,0 +1,127 @@
+package com.mycompany.linkedincontactos;
+import java.awt.*;
+import java.awt.event.*;
+
+public class LinkedinContactos {
+    
+    public static void main(String[] args) throws AWTException {
+        Robot r = new Robot();
+        int iterations = 1000;
+        
+        r.delay(4000);
+        
+        for(int i=230;i<iterations;i++){
+            
+            //Selecciona nombre del perfil
+            r.mouseMove(180, 150);
+            r.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+            r.mouseRelease(InputEvent.BUTTON1_DOWN_MASK); r.delay(50);
+            r.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+            r.mouseRelease(InputEvent.BUTTON1_DOWN_MASK); r.delay(50);
+            r.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+            r.mouseRelease(InputEvent.BUTTON1_DOWN_MASK); r.delay(50);
+            
+            //Copia el nombre del perfil
+            Copiar();
+            
+            //Cambia ventana a contactos
+            CambiarVentana();
+            
+            //Pega el nombre del perfil
+            Pegar();
+            
+            r.keyPress(KeyEvent.VK_RIGHT); r.delay(100);
+            
+            //Cambia ventana a Linkedin
+            CambiarVentana();
+            
+            //Selecciona email
+//            r.mouseMove(200, 260);
+//            r.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+//            r.mouseRelease(InputEvent.BUTTON1_DOWN_MASK); r.delay(50);
+//            r.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+//            r.mouseRelease(InputEvent.BUTTON1_DOWN_MASK); r.delay(50);
+//            r.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+//            r.mouseRelease(InputEvent.BUTTON1_DOWN_MASK); r.delay(50);
+//            
+//            //Copia el email
+//            Copiar();
+//            
+//            //Cambia ventana a contactos
+//            CambiarVentana();
+//            
+//            //Pega el email
+//            Pegar();
+//            
+//            r.keyPress(KeyEvent.VK_LEFT); r.delay(100);
+//            
+//            //Cambia ventana a Linkedin
+//            CambiarVentana();
+            
+            //Copia el dirección de Linkedin
+            r.mouseMove(180, 320);
+            r.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+            r.mouseRelease(InputEvent.BUTTON1_DOWN_MASK); r.delay(50);
+            r.mouseMove(300, 375);
+            r.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+            r.mouseRelease(InputEvent.BUTTON1_DOWN_MASK); r.delay(50);
+            
+            //Cambia ventana a contactos
+            CambiarVentana();
+            
+            //Pega el enlace a Linkedin
+            Pegar();
+            
+            //Deja planilla contactos listo para la siguiente iteración
+            r.keyPress(KeyEvent.VK_LEFT); r.delay(100);
+            r.keyPress(KeyEvent.VK_DOWN); r.delay(100);
+            
+            //Cambia ventana a Linkedin
+            CambiarVentana();
+            
+            //Cierra pestaña
+            r.keyPress(KeyEvent.VK_CONTROL);
+            r.keyPress(KeyEvent.VK_W);
+            r.keyRelease(KeyEvent.VK_W);
+            r.keyRelease(KeyEvent.VK_CONTROL);
+            r.delay(50);
+            
+        }
+        
+    }
+    
+    //Método para copiar
+    static void Copiar() throws AWTException{
+        Robot r = new Robot();
+        try{
+            r.keyPress(KeyEvent.VK_CONTROL);
+            r.keyPress(KeyEvent.VK_C);
+            r.keyRelease(KeyEvent.VK_C);
+            r.keyRelease(KeyEvent.VK_CONTROL);
+        }catch(Exception e){}
+        r.delay(50);
+}
+    
+    //Método para pegar
+    static void Pegar() throws AWTException{
+        Robot r = new Robot();
+        try{
+            r.keyPress(KeyEvent.VK_CONTROL);
+            r.keyPress(KeyEvent.VK_V);
+            r.keyRelease(KeyEvent.VK_V);
+            r.keyRelease(KeyEvent.VK_CONTROL);
+        }catch(Exception e){}
+        r.delay(50);
+}
+    
+    //Método para cambiar de ventana
+    static void CambiarVentana() throws AWTException{
+        Robot r = new Robot();
+        r.keyPress(KeyEvent.VK_ALT);
+        r.keyPress(KeyEvent.VK_TAB);
+        r.keyRelease(KeyEvent.VK_TAB);
+        r.keyRelease(KeyEvent.VK_ALT);
+        r.delay(50);
+    }
+    
+}
